@@ -21,7 +21,7 @@ In this course you will learn how to handle with reproducibility of experiments 
 - How to organise databases
 - Missing data
 - Basic syntax to build markdown files (showing reports)
-- Some practical recommandations for hypotesys testing
+- Some practical recommandations for hypotesis testing
 
 ### Day 3: still under review
 
