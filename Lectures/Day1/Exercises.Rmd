@@ -1,0 +1,140 @@
+---
+title: "Exercises first lecture"
+author: "Giulia Nicole Baldrighi"
+date: "2024-03-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Installing packages
+
+```{r}
+#install.packages("tidyverse")
+#install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("hrbrthemes")
+```
+
+
+## Tidyverse R
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+```
+
+
+**Data import**
+
+```{r}
+data <- read.csv("C:/Users/gnbal/Desktop/GitHub/RVerse/data/Lars data.csv.gz")
+```
+
+
+**1) How many different mice were profiled in the experiment?**
+
+Number of samples (mice):
+
+```{r}
+samples<- unique(data$Sample_ID)
+length(samples)
+```
+
+
+**2) How many observations per mouse? Was there an equal number of observations for each mouse?**
+
+Observations per mouse:
+```{r}
+data %>% count(Sample_ID)
+```
+
+
+**3) Is there any missing data? How much? Is there a mouse with more missing data than other mice? Or a week, a day, a ZT time with more missing data?**
+
+There are different ways:
+```{r}
+#base R
+summary(data) 
+sapply(data,
+       function(x) sum(is.na(x)))
+colSums(is.na(data))
+```
+
+
+Missing per week:
+```{r}
+# tidyr
+data %>%
+    #group_by(Sample_ID) %>%
+        group_by(Week) %>% 
+        #group_by(Day) %>%
+        #group_by(ZT) %>%
+    summarise_all(~sum(is.na(.)))
+
+```
+
+
+Missign per day:
+```{r}
+# tidyr
+data %>%
+    #group_by(Sample_ID) %>%
+        #group_by(Week) %>% 
+        group_by(Day) %>%
+        #group_by(ZT) %>%
+    summarise_all(~sum(is.na(.)))
+```
+
+
+Missing per ZT:
+```{r}
+# tidyr
+data %>%
+    #group_by(Sample_ID) %>%
+        #group_by(Week) %>% 
+        #group_by(Day) %>%
+        group_by(ZT) %>%
+    summarise_all(~sum(is.na(.)))
+```
+
+
+- - -
+
+**4) Across how many weeks was the experiment performed?**
+
+Weeks of observation:
+```{r}
+data %>% count(Week)
+```
+
+
+**5) What is the mean, SD, and range in glucose value across weeks and days between the two different groups of mice?**
+
+Glucose through different groups:
+```{r, warning=FALSE, message=FALSE}
+data %>%
+       group_by(Group,Week,Day) %>%
+       summarise(mean = mean(Glucose),
+                 sd = sd(Glucose),
+                 range = range(Glucose))
+
+data %>%
+    group_by(Group,Week,Day) %>%
+    summarise(mean = mean(Glucose,na.rm=TRUE),
+              sd = sd(Glucose,na.rm=TRUE),
+              range = paste(range(Glucose),collapse=" - "))
+
+data %>%
+    group_by(Group,Week,Day) %>%
+    summarise(across(Glucose,
+                     .f = list(mean = mean,
+                               sd = sd,
+                               min = min,
+                               max = max),
+                     na.rm = TRUE))
+```
+
+
+
