@@ -1,5 +1,5 @@
 # RVerse
-Welcome to our R course for **data science applied to medicine**
+Welcome to our R course for **data science applied to medicine** at Ca' della Paglia (Unipv).
 
 In this course you will learn how to handle with reproducibility of experiments in R environment.
 
@@ -11,17 +11,18 @@ In this course you will learn how to handle with reproducibility of experiments 
 - R-base people vs Tidyverse people (how to survive)
 - Build your own project
 - Bases of data frames
-- Some plots
 
 - **Homework**: please remember what we have learnt during our Day 1 
-
+- Do some practice in the workbook (Exercises.Rmd) in folder Day1
 
 ### Day 2: Data structure (28/03)
-- Longitudinal and cross-sectional data
+- Summary statistics
+-  Plots
+- Rmd and pdf files 
+- Longitudinal and cross-sectional data some examples
 - How to organise databases
 - Missing data
 - Basic syntax to build markdown files (showing reports)
-- Some practical recommandations for hypotesis testing
 
 ### Day 3: still under review
 
