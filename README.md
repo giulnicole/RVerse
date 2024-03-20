@@ -17,7 +17,7 @@ In this course you will learn how to handle with reproducibility of experiments 
 
 
 ### Day 2: Data structure (28/03)
--Longitudinal and cross-sectional data
+- Longitudinal and cross-sectional data
 - How to organise databases
 - Missing data
 - Basic syntax to build markdown files (showing reports)
