@@ -1,7 +1,7 @@
 # RVerse
 Welcome to our R course for **data science applied to medicine** at Ca' della Paglia (Unipv).
-
-In this course you will learn how to handle with reproducibility of experiments in R environment.
+This is a **practical R course** in which you will learn the basis of R syntax and to reproduce exercises and base-level data exploratory analysis. 
+In this course you will learn how to handle with reproducibility (R projects), create reports (R markdown) and interact with repositories.
 
 ## Outline
 
@@ -19,13 +19,12 @@ In this course you will learn how to handle with reproducibility of experiments 
 - Summary statistics
 -  Plots
 - Rmd and pdf files 
-- Longitudinal and cross-sectional data some examples
 - How to organise databases
 - Missing data
 - Basic syntax to build markdown files (showing reports)
 
 ### Day 3: still under review
-
+- Longitudinal and cross-sectional data some examples
 
 ### Day 4: still under review
   
