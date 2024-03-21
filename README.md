@@ -12,7 +12,7 @@ In this course you will learn how to handle with reproducibility (R projects), c
 - Build your own project
 - Bases of data frames
 
-**Homework and take home message**: do some practice, drink tea and bring some question for next time!
+### **Homework and take home message**: do some practice, drink tea and bring some question for next time!
 please remember what we have learnt during our Day 1 
 Do some practice in the workbook (Exercises.Rmd) in folder Day1
 
