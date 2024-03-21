@@ -1,7 +1,7 @@
 # RVerse
 Welcome to our R course for **data science applied to medicine** at Ca' della Paglia (Unipv).
-This is a **practical R course** in which you will learn the basis of R syntax and to reproduce exercises and base-level data exploratory analysis. 
-In this course you will learn how to handle with reproducibility (R projects), create reports (R markdown) and interact with repositories.
+This is a **practical R course** in which you will learn the basis of R syntax the steps to perform reproducibility of exercises and base-level data exploratory analysis. 
+Elements: R projects, reports (R markdown) and interaction with repositories.
 
 ## Outline
 
