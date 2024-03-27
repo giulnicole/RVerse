@@ -23,7 +23,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Rmd and pdf files 
 - How to organise databases
 - Missing data
-- Basic syntax to build markdown files (showing reports)
+- Basic syntax for kableExtra
 
 ### Day 3: still under review
 - Longitudinal and cross-sectional data some examples
