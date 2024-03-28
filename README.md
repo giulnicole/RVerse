@@ -21,9 +21,9 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Summary statistics
 -  Plots
 - Rmd and pdf files 
-- How to organise databases
 - Missing data
 - Basic syntax for kableExtra
+- How to organise databases
 
 ### Day 3: still under review
 - Longitudinal and cross-sectional data some examples
