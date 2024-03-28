@@ -1,0 +1,428 @@
+---
+title: "Exercises2"
+author: "Giulia Nicole Baldrighi"
+e-mail: "giulianicole.baldrighi01@universitadipavia.it"
+date: "2024-03-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  ## edited options below
+  fig.width = 8,
+  fig.asp = 0.8,
+  out.width = "100%",
+  dpi = 300
+)
+```
+
+
+## Data 
+We will use a collection of data for practicing in medicine (`medicaldata`). 
+
+```{r}
+library(medicaldata)
+```
+
+Today's lecture has a practical session on data from the following study on cytomegalovirus infection. 
+In this dataset data from patients who underwent T-cell replete is collected, with respect to matched sibling donor reduced-intensity conditioning allogeneic hematopoietic stem
+cell transplant. 
+
+In this study, the primary risk factor of interest was the number of activating killer immunoglobulin-like receptors (aKIRs: 1-4 vs. 5-6). A number of demographic,
+baseline and transplant characteristics were also collected. The primary outcome is
+presence of and time to cytomegalovirus reactivation. The dataset is cleaned and
+relatively complete. There are no outliers or data problems. These are data from a
+study by Sobecks et al. “Cytomegalovirus Reactivation After Matched Sibling Donor
+Reduced-Intensity Conditioning Allogeneic Hematopoietic Stem Cell Transplant
+Correlates With Donor Killer Immunoglobulin-like Receptor Genotype”. Exp Clin Transplant 2011; 1: 7-13.
+
+
+
+
+## First of all, a bit of statistics
+
+**What does it mean that we do not have outliers?**
+
+- Usually outliers may compromise inference if we are interesetd in some model of prediction. 
+
+- Good practice to perform that is to check for normality assumption of data, via tests of normality, namely, the Kolmogorov–Smirnov test and the Shapiro–Wilk test.
+
+
+Let's assume we have normal data and non-normal data.
+
+```{r}
+normal_data <- rnorm(300)
+
+#create data that follows an exponential distribution
+non_normal_data <- rexp(300, rate=3)
+
+```
+
+
+```{r}
+#create histogram for both datasets
+par(mfrow=c(1,2))
+hist(normal_data, col='steelblue', main='Normal')
+hist(non_normal_data, col='steelblue', main='Non-normal')
+```
+**Shapito test**
+
+```{r}
+shapiro.test(normal_data)
+```
+
+```{r}
+shapiro.test(non_normal_data)
+```
+**QQplot**
+
+```{r}
+qqnorm(normal_data, main='Normal')
+qqline(normal_data)
+```
+
+
+```{r}
+qqnorm(non_normal_data, main='Normal')
+qqline(non_normal_data)
+```
+
+
+**Kolmogorov-Smirnov**
+```{r}
+ks.test(normal_data, 'pnorm')
+```
+```{r}
+ks.test(non_normal_data, 'pnorm')
+```
+
+
+
+
+## Practicing on the data
+
+We start by importing the dataset cytomegalovirus, by creating an internal object in R.
+
+```{r}
+dati2 <- medicaldata::cytomegalovirus
+```
+
+
+### Steps: reading the data
+
+### 1) How many and which variables are there?
+
+
+```{r}
+length(colnames(dati2))
+```
+
+
+```{r}
+colnames(dati2)
+```
+
+
+### 2) Cross sectional or longitudinal data? 
+
+Which are the differences?
+
+
+**Cross-sectional data**
+
+- one time point
+
+- only different individuals in the sample (no repetitions)
+
+- snapshot of a given point in time 
+
+
+**Longitudinal data**
+
+- several points in time
+
+- same individuals sampled more than one time 
+
+- time varies
+
+
+
+### 3) Are there missing data?
+
+```{r}
+sapply(dati2,
+       function(x) sum(is.na(x)))
+colSums(is.na(dati2))
+```
+
+### 4) Create a data frame with the information on missing data per variable: 
+
+**Way one**: 
+```{r}
+table.missing<- as.data.frame(sapply(dati2,
+       function(x) sum(is.na(x))))
+
+colnames(table.missing)<- "NAs"
+table.missing
+```
+
+**Way two**: 
+```{r}
+table.missing2<- data.frame(colSums(is.na(dati2)))
+colnames(table.missing2)<- "NAs"
+table.missing2
+```
+
+
+### kableExtra
+```{r, warning=FALSE}
+library(kableExtra)
+
+table.missing %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+```
+
+
+
+```{r}
+table2 <- dati2[1:10,2:7]
+
+table2 %>%
+  kbl(caption = "Recreating booktabs style table") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+
+
+```{r}
+table2 %>%
+  kbl() %>%
+  kable_minimal()
+```
+
+
+
+```{r, warning=FALSE, messages=FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
+## Plots and exploratory statistics
+
+**Note**
+Human leucocyte antigen (HLA) typing on donors and recipients was performed to
+allow assessment of killer immunoglobulin-like receptor ligands (KIRs). To allow for
+comparison with previous studies, donors were categorized as having 1-4 or 5-6
+activating killer immunoglobulin-like receptor genes (aKIRs). 
+
+
+### Histogram
+
+```{r}
+dati2.a <- dati2 %>% 
+  filter(aKIRs < 5)
+  
+ggplot(data = dati2, mapping = aes(x = time.to.cmv )) +
+  geom_histogram(binwidth = 2, fill="red", col="black")+
+  ggtitle("Time to cytomegalovirus")
+```
+
+### Calculate the mean, median and standard deviation of the time to cytomegalovirus.
+
+```{r}
+all<- data.frame(mean=mean(dati2$time.to.cmv),
+                        median=median(dati2$time.to.cmv),
+                        sd=sd(dati2$time.to.cmv))
+```
+
+
+
+### Now let's try to answer to these questions: 
+
+**1)** Are there differences between the *time.to.cytomegalovisus*
+ in patients with 1<=aKIRs<=4 and those ones with aKIRs >4?
+ 
+ - Explore with graphic distribution and calculate means, medians and standard deviations. 
+ 
+ - which kind of test could you aplly to verify this hypothesis?
+
+ 
+ ### Graphical distributions:
+ 
+Patients with aKIRs 1-4: 
+```{r}
+dati2.a <- dati2 %>% 
+  filter(aKIRs < 5)
+  
+ggplot(data = dati2.a, mapping = aes(x = time.to.cmv))+
+  geom_histogram(binwidth = 2, fill="lightblue", col="black")+
+  ggtitle("Time to cytomegalovirus in aKIRs < 5")
+```
+ 
+ 
+Patients with aKIRs 5-6:
+```{r}
+dati2.b <- dati2 %>% 
+  filter(aKIRs > 4)
+  
+ggplot(data = dati2.b, mapping = aes(x = time.to.cmv)) +
+  geom_histogram(binwidth = 2, fill="orange",  col="black")+
+  ggtitle("Time to cytomegalovirus in aKIRs >4")
+```
+
+ 
+Patients with aKIRs 1-4:
+```{r}
+group.a<- data.frame(mean=mean(dati2.a$time.to.cmv),
+                        median=median(dati2.a$time.to.cmv),
+                        sd=sd(dati2.a$time.to.cmv))
+  
+  
+
+```
+ 
+Patients with aKIRs 5-6:
+```{r}
+group.b<- data.frame(mean=mean(dati2.b$time.to.cmv),
+                        median=median(dati2.b$time.to.cmv),
+                        sd=sd(dati2.b$time.to.cmv))
+  
+```
+
+
+```{r}
+dati2$akirs.group<- 0
+dati2$akirs.group[dati2$aKIRs==5 | dati2$aKIRs==6] <- "b"
+dati2$akirs.group[dati2$aKIRs!=5 & dati2$aKIRs!=6] <- "a"
+
+```
+
+
+
+### Boxplot
+
+```{r}
+ggplot(data = dati2, mapping = aes(x = as.factor(akirs.group), y = time.to.cmv, fill=as.factor(akirs.group))) +
+  geom_boxplot(fill=c('lightblue', 'darkred'))+
+   guides(fill = guide_legend(title = "Sex"))+
+  xlab("aKIRs group")
+```
+
+**Are they equal (considered statistically similar)?**
+```{r}
+wilcox.test(dati2.a$time.to.cmv, dati2.b$time.to.cmv)
+```
+
+
+Divided per sex:
+```{r}
+ggplot(data = dati2, mapping = aes(x = as.factor(sex), y = time.to.cmv, fill=as.factor(sex))) +
+   geom_boxplot(fill=c('lightblue', 'darkred'))+
+   guides(fill = guide_legend(title = "Sex"))+
+   xlab("Sex")
+```
+
+Dividing per sex in group a: 
+```{r}
+
+dati2.am <- dati2.a[dati2.a$sex==0, ]
+  
+dati2.af <- dati2.a[dati2.a$sex==1, ]
+
+
+wilcox.test(dati2.am$time.to.cmv, dati2.af$time.to.cmv)
+```
+Why is result different than before?
+
+
+Dividing per sex in group b: 
+```{r}
+
+dati2.bm <- dati2.b[dati2.b$sex==0, ]
+  
+dati2.bf <- dati2.b[dati2.b$sex==1, ]
+
+
+wilcox.test(dati2.bm$time.to.cmv, dati2.bf$time.to.cmv)
+```
+Why is p value even greater than before?
+
+
+### Barplots
+
+
+Patients with akirs 5-6:
+
+```{r}
+ggplot(data = dati2) +
+  geom_bar(mapping = aes(x = prior.chemo), fill="lightblue")+
+  theme_light()
+```
+
+
+
+### Scatter plots
+
+To visualize trends (linear, polinomial)
+
+```{r}
+ggplot(data = dati2, mapping = aes(x = aKIRs, y = time.to.cmv) )+
+  geom_point()+
+  theme_bw()
+```
+
+
+```{r}
+ggplot(data = dati2, mapping = aes(x = aKIRs, y = time.to.cmv, colour=as.factor(sex))) + 
+  geom_point()+
+  guides(fill = guide_legend(title = "Sex"))
+```
+
+### Other types of boxplots
+Distribution of quantitative variables
+```{r}
+
+ggplot(data = dati2, mapping = aes(x = as.factor(aKIRs), y = time.to.cmv, fill=as.factor(sex))) +
+  geom_boxplot()+
+   guides(fill = guide_legend(title = "Sex"))
+
+```
+
+
+
+```{r}
+bp <- ggplot(dati2, aes(x=as.factor(sex), y=time.to.cmv, group=as.factor(sex))) + 
+  geom_boxplot(aes(fill=as.factor(sex)))+
+   guides(fill = guide_legend(title = "Sex"))
+
+bp
+
+bp + facet_grid(as.factor(donor.cmv) ~ .)
+
+# Split in horizontal direction
+bp + facet_grid(. ~ as.factor(donor.cmv))
+```
+
+```{r}
+bp + facet_grid(as.factor(aKIRs) ~ .)
+# Split in horizontal direction
+bp + facet_grid(. ~ as.factor(aKIRs))
+```
+
+### dataReporter
+
+```{r}
+library(dataReporter)
+```
+
+
+
+```{r}
+#makeDataReport(dati2, )
+```
+
+
+

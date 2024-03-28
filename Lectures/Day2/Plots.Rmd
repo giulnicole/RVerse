@@ -1,0 +1,97 @@
+---
+title: "Plots first lecture"
+author: "Giulia Nicole Baldrighi"
+date: "2024-03-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data
+```{r, warning=FALSE, message=FALSE}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+```
+
+
+## Exercise 
+
+
+**1)** Explore the data: which variables are there? 
+
+**2)** Explore empirical distribution of variables in the dataset with an histogram (libraries:`ggplto2`, `hrbrthemes`)
+
+```{r, echo=FALSE, results=FALSE}
+colnames(diamonds)
+```
+
+```{r warning=FALSE, message=FALSE}
+# Libraries
+library(hrbrthemes)
+```
+
+
+Depth
+```{r pressure, warning=FALSE, message=FALSE}
+# plot
+p <- diamonds %>%
+  ggplot( aes(x=depth)) +
+    geom_histogram( binwidth=5, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    ggtitle("Depth distribution") +
+    theme_ipsum() +
+    theme(
+      plot.title = element_text(size=15)
+    )
+p
+```
+
+
+
+
+Price
+```{r warning=FALSE, message=FALSE}
+# plot
+p2 <- diamonds %>%
+  ggplot( aes(x=price)) +
+    geom_histogram( binwidth=15, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    ggtitle("Price distribution") +
+    theme_ipsum() +
+    theme(
+      plot.title = element_text(size=15)
+    )
+p2
+```
+
+**Why is it white?**
+
+
+Increasing **binwidth**:
+```{r warning=FALSE, message=FALSE}
+p2 <- diamonds %>%
+  ggplot( aes(x=price)) +
+    geom_histogram( binwidth=500, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    ggtitle("Price distribution") +
+    theme_ipsum() +
+    theme(
+      plot.title = element_text(size=15)
+    )
+p2
+```
+
+
+```{r warning=FALSE, message=FALSE}
+p2 <- diamonds %>%
+  filter(price<10000)%>%
+  ggplot( aes(x=price)) +
+    geom_histogram( binwidth=500, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    ggtitle("Price distribution") +
+    theme_ipsum() +
+    theme(
+      plot.title = element_text(size=15)
+    )
+p2
+```
+
