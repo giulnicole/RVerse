@@ -25,6 +25,12 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Basic syntax for kableExtra
 - How to organise databases
 
+### Homework
+- Try to reproduce the markdown file *Plots.R* in Day2 folder and understand the commands.
+- Change layout of graphics and knit the file.
+- Use medicaldata package to investigate another dataset. 
+
+
 ### Day 3: still under review
 - Longitudinal and cross-sectional data some examples
 
