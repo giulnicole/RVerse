@@ -11,11 +11,11 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - R-base people vs Tidyverse people (how to survive)
 - Build your own project
 - Bases of data frames
-
-  ### Links
+- - -
+### Links
 **Hand on R** https://rstudio-education.github.io/hopr/
   
-### **Homework and take home message**: 
+### **Homework and take home message**
 *do some practice, drink tea and bring some question for next time!*
 - please remember what we have learnt during our Day 1 
 - practice with the workbook (Exercises.Rmd) in folder Day1
@@ -27,9 +27,10 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Rmd and pdf files 
 - Basic syntax for kableExtra
 
-  
+- - - 
 ### Links
 **medicaldata** https://higgi13425.github.io/medicaldata/
+
 **R graph gallery** https://r-graph-gallery.com/
 
 
