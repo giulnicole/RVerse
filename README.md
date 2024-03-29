@@ -24,6 +24,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Missing data
 - Basic syntax for kableExtra
 - How to organise databases
+Link medicaldata: https://higgi13425.github.io/medicaldata/
 
 ### Homework
 - Try to reproduce the markdown file *Plots.R* in Day2 folder and understand the commands
