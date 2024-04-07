@@ -40,9 +40,14 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - - - 
 
 ### Day 3: still under review
-- Longitudinal and cross-sectional data some examples
+- Some more examples on plots
 - How to organise databases
 - Missing data
+- Introduction to hypotheses testing
+
+- - -
 
 ### Day 4: still under review
+- Classical linear model and GLM
+
   
