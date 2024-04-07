@@ -49,5 +49,4 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 ### Day 4: Models and extensions
 - Classical linear model and GLM
-
-  
+- Examples of unsupervised learning with exploratory purpouse 
