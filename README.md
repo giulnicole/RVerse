@@ -39,7 +39,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 - - - 
 
-### Day 3: still under review
+### Day 3: introduction to hypoteses testing
 - Some more examples on plots
 - How to organise databases
 - Missing data
@@ -47,7 +47,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 - - -
 
-### Day 4: still under review
+### Day 4: Models and extensions
 - Classical linear model and GLM
 
   
