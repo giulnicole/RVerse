@@ -39,7 +39,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 - - - 
 
-### Day 3: introduction to hypoteses testing
+### Day 3: Introduction to hypoteses testing
 - Some more examples on plots
 - How to organise databases
 - Missing data
