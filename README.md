@@ -34,7 +34,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 ### Homework
 - Try to reproduce the markdown file *Plots.R* in Day2 folder and understand the commands
-- Change layout of graphics and knit the file
+- Change layout of graphics in Exercise2.rmd and knit the file
 - Use ***medicaldata*** package to investigate another dataset
 
 - - - 
