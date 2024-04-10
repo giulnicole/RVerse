@@ -18,7 +18,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 ### **Homework and take home message**
 *do some practice, drink tea and bring some question for next time!*
 - please remember what we have learnt during our Day 1 
-- practice with the workbook (Exercises.Rmd) in folder Day1
+- practice with the workbook (*Exercises.Rmd*) in folder Day1
 - - -
 
 ### Day 2: Data structure (28/03)
@@ -34,7 +34,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 ### Homework
 - Try to reproduce the markdown file *Plots.R* in Day2 folder and understand the commands
-- Change layout of graphics in Exercise2.rmd and knit the file
+- Change layout of graphics in *Exercise2.rmd* and knit the file
 - Use ***medicaldata*** package to investigate another dataset
 
 - - - 
