@@ -1,0 +1,139 @@
+---
+title: "Third lecture"
+author: "Giulia Nicole Baldrighi"
+date: "2024-04-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+# Data import
+
+**NB** remember the libraries
+```{r}
+library(readxl)
+dati <- read_excel("dati_chirurgia.xlsx")
+```
+
+### Check for variable names
+```{r}
+colnames(dati)
+```
+
+
+
+### Glimpse
+```{r,  warning = FALSE}
+library(dplyr)
+glimpse(dati)
+```
+
+
+### Check for distribution and missing data
+```{r}
+library(ggplot2)
+ggplot(dati, aes(x =as.factor(Comorbidità), fill=Sex)) +
+  geom_bar() +
+  labs(title = "Barplot Example", x = "Groups", y = "Values") +
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+**Question**: *does it have sense to include a variable with so many missing values?* 
+
+
+### NAs
+```{r}
+library(kableExtra)
+nas <- dati %>%
+  summarise_all(~ sum(is.na(.)))
+
+
+nas %>%
+  kbl() %>%
+  kable_styling()
+```
+
+- - - 
+### Frequencies of categories
+```{r,  warning = FALSE}
+library(tidyverse)
+
+lapply(dati, typeof)
+
+table<- table(dati$Comorbidità)
+
+table%>%
+  kbl() %>%
+  kable_styling()
+
+```
+
+**Question**: *does it have sense to include an under-representative category?*
+
+
+### Try actively on the data (Comorbidità and Complicanze)
+
+
+- - - 
+
+### What important information is missing?
+```{r}
+dati$ID <- paste0("id", 1:110)
+dati$ID
+```
+
+
+- - - 
+
+
+### Unsupervised exploratory analysis 
+```{r}
+library("FactoMineR")
+library("factoextra")
+
+res<- FAMD (dati[,c(3,4,6,7,8,22)], ncp = 3, sup.var =9, ind.sup = NULL, graph = TRUE)
+
+
+fviz_screeplot(res)
+```
+
+
+```{r}
+fviz_mca_var(res)
+```
+
+
+
+```{r}
+# Contribution to the first dimension
+fviz_contrib(res, "var", axes = 1)
+```
+
+
+```{r}
+# Contribution to the second dimension
+fviz_contrib(res, "var", axes = 2)
+```
+
+
+```{r}
+fviz_contrib(res, "var", axes = 3)
+```
+
+
+```{r}
+
+fviz_famd_var(res, "quali.var", col.var = "contrib", 
+              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07")
+)
+
+```
+
+
+
+
+
+
