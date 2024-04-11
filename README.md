@@ -12,21 +12,41 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Build your own project
 - Bases of data frames
 
-### **Homework and take home message**: 
+### Links
+**Hand on R** https://rstudio-education.github.io/hopr/
+  
+### **Homework and take home message**
 *do some practice, drink tea and bring some question for next time!*
 - please remember what we have learnt during our Day 1 
-- practice with the workbook (Exercises.Rmd) in folder Day1
+- practice with the workbook (*Exercises.Rmd*) in folder Day1
+- - -
 
 ### Day 2: Data structure (28/03)
-- Summary statistics
--  Plots
+- Summary statistics (indexes, outliers, normal distribution)
+- Plots
 - Rmd and pdf files 
-- How to organise databases
-- Missing data
 - Basic syntax for kableExtra
 
-### Day 3: still under review
-- Longitudinal and cross-sectional data some examples
+### Links
+**medicaldata** https://higgi13425.github.io/medicaldata/
 
-### Day 4: still under review
-  
+**R graph gallery** https://r-graph-gallery.com/
+
+### Homework
+- Try to reproduce the markdown file *Plots.R* in Day2 folder and understand the commands
+- Change layout of graphics in *Exercises2.rmd* and knit the file
+- Use ***medicaldata*** package to investigate another dataset
+
+- - - 
+
+### Day 3: Introduction to hypotheses testing
+- Some more examples on plots
+- How to organise databases
+- Missing data
+- Introduction to hypotheses testing
+
+- - -
+
+### Day 4: Models and extensions
+- Classical linear model and GLM
+- Examples of unsupervised learning with exploratory purpouse 
