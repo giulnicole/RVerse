@@ -43,8 +43,8 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Some more examples on plots
 - How to organise databases
 - Missing data
-- 
 
+  
 - - -
 
 ### Day 4: Models and extensions
