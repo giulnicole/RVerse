@@ -43,10 +43,10 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Some more examples on plots
 - How to organise databases
 - Missing data
-- Introduction to hypotheses testing
+- 
 
 - - -
 
 ### Day 4: Models and extensions
-- Classical linear model and GLM
 - Examples of unsupervised learning with exploratory purpouse 
+- Introduction to hypotheses testing
