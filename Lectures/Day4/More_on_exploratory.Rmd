@@ -1,0 +1,176 @@
+---
+title: "Unsupervised exploratory analysis"
+author: "Giulia Nicole Baldrighi"
+date: "2024-04-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+
+**Library**
+```{r}
+library(medicaldata)
+```
+
+
+
+**Data**
+```{r}
+cyto <- medicaldata::cytomegalovirus
+
+colnames(cyto)
+```
+
+**Libraries for unsupervised data analysis**
+```{r}
+library("FactoMineR")
+library("factoextra")
+```
+
+### Quantitative variables
+```{r}
+library(GGally)
+```
+
+
+**Pre-checks**
+
+```{r}
+cyto.q <- cyto[, c(2,7,14:18, 20, 22, 24, 26)]
+class(cyto.q) <- "data.frame"
+ggscatmat(cyto.q, columns = 1:4)
+```
+
+
+```{r}
+ggscatmat(cyto.q, columns = 3:7)
+```
+
+
+
+
+```{r}
+ggscatmat(cyto.q, columns = 5:9)
+```
+
+```{r}
+ggscatmat(cyto.q, columns = 6:10)
+```
+
+```{r}
+ggscatmat(cyto.q, columns = 7:11)
+```
+```{r}
+ggscatmat(cyto.q, columns = c(1,2,8:11))
+```
+
+
+```{r}
+cyto.q<- na.omit(cyto.q)
+
+pca1<- princomp(cyto.q)
+```
+
+
+```{r}
+summary(pca1)
+```
+
+```{r}
+cor(cyto.q, pca1$scores)
+```
+
+
+
+```{r}
+library(ggplot2)
+ggcorr(cbind(cyto.q, pca1$scores), label = F, cex = 3)
+```
+
+### Qualitative and quantitative variables 
+
+```{r}
+library(FactoMineR)
+colnames(cyto)
+cyto.q2 <- cyto[,c(3,4,5,6:9,20)]
+
+cyto.q2 <- na.omit(cyto.q2)
+```
+
+
+**Correlation plot**
+
+```{r}
+library(corrplot)
+M<-cor(cyto.q)
+corrplot(M, method="circle")
+```
+
+
+```{r}
+corrplot(M, method="color")
+```
+
+
+**Performing FAMD**
+
+```{r}
+res.famd <- FAMD(cyto.q2, graph = FALSE)
+```
+
+
+```{r}
+eig.val <- get_eigenvalue(res.famd)
+head(eig.val)
+```
+
+
+
+```{r}
+fviz_screeplot(res.famd)
+```
+
+**Qualitative variables**
+```{r}
+# Plot of variables
+fviz_famd_var(res.famd, repel = TRUE)
+```
+
+
+```{r}
+# Contribution to the first dimension
+fviz_contrib(res.famd, "var", axes = 1)
+```
+
+
+```{r}
+# Contribution to the second dimension
+fviz_contrib(res.famd, "var", axes = 2)
+```
+
+**Quantitative variables**
+```{r}
+fviz_famd_var(res.famd, "quanti.var", repel = TRUE,
+              col.var = "black")
+```
+
+
+**Visualising categories**
+```{r}
+fviz_famd_var(res.famd, "quali.var", col.var = "contrib", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07")
+             )
+```
+
+
+**Visualising individuals**
+```{r}
+fviz_famd_ind(res.famd, col.ind = "cos2", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE)
+```
+
+
