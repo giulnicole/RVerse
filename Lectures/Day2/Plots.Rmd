@@ -82,16 +82,24 @@ p2
 ```
 
 
+
 ```{r warning=FALSE, message=FALSE}
 p2 <- diamonds %>%
   filter(price<10000)%>%
   ggplot( aes(x=price)) +
-    geom_histogram( binwidth=500, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    geom_histogram( binwidth=500, fill="red", color="#e9ecef", alpha=0.9) +
     ggtitle("Price distribution") +
     theme_ipsum() +
     theme(
       plot.title = element_text(size=15)
     )
+
+
+ d2<- diamonds%>%
+  filter(price<10000)
+ mean(d2$price, na.rm = T)
+
+
 p2
 ```
 

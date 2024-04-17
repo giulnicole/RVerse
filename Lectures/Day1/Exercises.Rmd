@@ -9,9 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Installing packages
+Installing packages if not present
 
-```{r}
+```{r, echo=FALSE}
 #install.packages("tidyverse")
 #install.packages("dplyr")
 #install.packages("ggplot2")
@@ -19,7 +19,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## Tidyverse R
+### Hands on Tidyverse R syntax
+
+```{r, warning=FALSE, message=FALSE}
+```
+
 
 ```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
@@ -29,7 +33,7 @@ library(tidyverse)
 **Data import**
 
 ```{r}
-data <- read.csv("C:/Users/gnbal/Desktop/GitHub/RVerse/data/Lars data.csv.gz")
+data <- read.csv("C:/Users/gnbal/Desktop/GitHub/RVerse/data/dati.csv.gz")
 ```
 
 
