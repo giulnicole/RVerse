@@ -39,7 +39,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 - - - 
 
-### Day 3: Introduction to databases structure
+### Day 3: Databases' structure
 - Some more examples on plots
 - How to organise databases
 - Missing data
