@@ -39,7 +39,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 - - - 
 
-### Day 3: Introduction to hypotheses testing
+### Day 3: Introduction to databases structure
 - Some more examples on plots
 - How to organise databases
 - Missing data
@@ -47,7 +47,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
   
 - - -
 
-### Day 4: Summary of rprevious lectures 
+### Day 4: Summary of previous lectures 
 - Recap on R synta, theory behind exploratory analysis
 - Examples of unsupervised learning with exploratory purpouse 
 
