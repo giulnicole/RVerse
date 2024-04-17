@@ -1,5 +1,5 @@
 ---
-title: "Exercises2"
+title: "Exercises second lecture"
 author: "Giulia Nicole Baldrighi"
 e-mail: "giulianicole.baldrighi01@universitadipavia.it"
 date: "2024-03-23"
@@ -123,6 +123,10 @@ length(colnames(dati2))
 ```{r}
 colnames(dati2)
 ```
+```{r}
+typeof(dati2$sex)
+dati2$aKIRs<- as.factor(dati2$aKIRs)
+```
 
 
 ### 2) Cross sectional or longitudinal data? 
@@ -178,6 +182,7 @@ table.missing2
 
 ### kableExtra
 ```{r, warning=FALSE}
+
 library(kableExtra)
 
 table.missing %>%
@@ -220,6 +225,27 @@ activating killer immunoglobulin-like receptor genes (aKIRs).
 
 
 ### Histogram
+```{r}
+# Libraries
+library(tidyverse)
+library(hrbrthemes)
+
+
+
+# plot
+
+  ggplot(data=dati2, aes(x=time.to.cmv)) +
+    geom_histogram( binwidth=3, 
+                    fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+    ggtitle("Bin size = 3") +
+    theme_ipsum() +
+    theme(
+      plot.title = element_text(size=15)
+    )
+
+```
+
+
 
 ```{r}
 dati2.a <- dati2 %>% 
@@ -333,7 +359,7 @@ dati2.am <- dati2.a[dati2.a$sex==0, ]
 dati2.af <- dati2.a[dati2.a$sex==1, ]
 
 
-wilcox.test(dati2.am$time.to.cmv, dati2.af$time.to.cmv)
+# wilcox.test.default(dati2.am$time.to.cmv, dati2.af$time.to.cmv)
 ```
 Why is result different than before?
 
@@ -358,7 +384,7 @@ Patients with akirs 5-6:
 
 ```{r}
 ggplot(data = dati2) +
-  geom_bar(mapping = aes(x = prior.chemo), fill="lightblue")+
+  geom_bar(mapping = aes(x = prior.chemo), fill="blue")+
   theme_light()
 ```
 
