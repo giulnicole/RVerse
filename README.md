@@ -21,7 +21,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - practice with the workbook (*Exercises.Rmd*) in folder Day1
 - - -
 
-### Day 2: Data structure (28/03)
+### Day 2: Cross sectional data exploration (28/03)
 - Summary statistics (indexes, outliers, normal distribution)
 - Plots
 - Rmd and pdf files 
@@ -39,18 +39,20 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 
 - - - 
 
-### Day 3: Databases' structure
-- Some more examples on plots
+### Day 3: Databases' structure (11/04)
+- More examples on ggplot2
 - How to organise databases
 - Missing data
+- The problem of categorical variables
+- Factorial analysis for exploratory purpouse
 
 ### Links
 **databases** https://www.ucd.ie/ecomodel/Resources/Sheet2b_data_organisation_WebVersion.html
   
 - - -
 
-### Day 4: Summary of previous lectures 
+### Day 4: Longitudinal data exploration (17/04)
 - Recap on R syntax
 - Theory behind exploratory analysis
-- Examples of unsupervised learning with exploratory purpouse 
+- Longitudinal data exploration
 
