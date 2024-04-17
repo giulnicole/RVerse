@@ -1,5 +1,5 @@
 ---
-title: "Third lecture"
+title: "Exercises third lecture"
 author: "Giulia Nicole Baldrighi"
 date: "2024-04-11"
 output: html_document
