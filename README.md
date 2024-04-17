@@ -48,6 +48,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - - -
 
 ### Day 4: Summary of previous lectures 
-- Recap on R synta, theory behind exploratory analysis
+- Recap on R syntax
+- Theory behind exploratory analysis
 - Examples of unsupervised learning with exploratory purpouse 
 
