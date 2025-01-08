@@ -47,7 +47,6 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Factorial analysis for exploratory purpouse (FAMD)
 
 ### Links
-**databases** https://www.ucd.ie/ecomodel/Resources/Sheet2b_data_organisation_WebVersion.html
 
 **FAMD** http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/115-famd-factor-analysis-of-mixed-data-in-r-essentials/  
 - - -
