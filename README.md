@@ -52,7 +52,6 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - - -
 
 ### Day 4: Longitudinal data exploration (17/04)
-- Recap on R syntax
-- Theory behind exploratory analysis
+- R syntax for multiple observation over time
 - Longitudinal data exploration
 
