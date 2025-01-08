@@ -13,7 +13,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - Bases of data frames
 
 ### Links
-**Hand on R** https://rstudio-education.github.io/hopr/
+**Hands on R** https://rstudio-education.github.io/hopr/
   
 ### **Homework and take home message**
 *do some practice, drink tea and bring some question for next time!*
