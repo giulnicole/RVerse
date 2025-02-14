@@ -45,12 +45,7 @@ Elements: R projects, reports (R markdown) and interaction with repositories.
 - How to organise databases
 - Missing data
 - The problem of categorical variables
-- Factorial analysis for exploratory purpouse (FAMD)
 
-### Links
-
-**FAMD** http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/115-famd-factor-analysis-of-mixed-data-in-r-essentials/  
-- - -
 
 ### Day 4: Longitudinal data exploration (17/04)
 - R syntax for multiple observation over time
