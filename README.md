@@ -1,5 +1,6 @@
 # RVerse
-Welcome to our R course for practising in **data science applied to medicine** 
+Welcome to our R course for practising in **data science applied to medicine**.
+
 This is a **practical R course** in which you will learn the basis of R syntax the steps to perform reproducibility of exercises and base-level data exploratory analysis. 
 Elements: R projects, reports (R markdown) and interaction with repositories.
 
